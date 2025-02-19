@@ -1,7 +1,18 @@
+## Why fork
+
+All revolt API libraries kinda suck. This one seemed the least sucky and most maintainable.
+
+## Todo
+- Rebrand it prolly
+- Cleanup and update all structs
+- Check events
+- Check all other infra for changes
+
+## Standard Readme:
 
 ## Support server
 
-We have a Revolt server dedicated to this project, where you can discuss the project, 
+We have a Revolt server dedicated to this project, where you can discuss the project,
 suggest features, or highlight issues.
 [**Join our community.**](https://rvlt.gg/R55WJBjx)
 
@@ -35,7 +46,7 @@ Additionally, revoltgo provides quality-of-life features such as:
 
 ### Installation
 
-Assuming that you have a working Go environment ready, all you have to do is run 
+Assuming that you have a working Go environment ready, all you have to do is run
 either of the following commands to install the package:
 
 **Stable release**
@@ -88,12 +99,12 @@ The following examples are available in the [examples](https://github.com/sentin
 - **selfbot.go**: A simple **self-bot** that responds to the `!ping` command.
 
 ## Resource usage
-The resource utilisation of the library depends on how many handlers are registered 
-and how many objects are cached in the state. More handlers will increase CPU usage, while 
+The resource utilisation of the library depends on how many handlers are registered
+and how many objects are cached in the state. More handlers will increase CPU usage, while
 more objects in the state will increase memory usage.
 
-For programs that need to be as lightweight as possible (and do not care about caching objects), 
-they can disable the state by setting the following tracking options in `Session.State`: 
+For programs that need to be as lightweight as possible (and do not care about caching objects),
+they can disable the state by setting the following tracking options in `Session.State`:
 ```go
 /* Tracking options */
 TrackUsers    bool

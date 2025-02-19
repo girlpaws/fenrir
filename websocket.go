@@ -3,10 +3,11 @@ package revoltgo
 import (
 	"bytes"
 	"encoding/binary"
-	"github.com/goccy/go-json"
-	"github.com/lxzan/gws"
 	"log"
 	"time"
+
+	"github.com/goccy/go-json"
+	"github.com/lxzan/gws"
 )
 
 type WebsocketMessageType string
@@ -37,8 +38,9 @@ func (ws *websocket) heartbeat(session *Session, socket *gws.Conn) {
 	for session.Connected {
 		select {
 		case <-ticker.C:
+			timestamp := time.Now().Unix()
 			payload := bytes.NewBuffer(make([]byte, 0, 64))
-			err = binary.Write(payload, binary.LittleEndian, session.HeartbeatCount)
+			err = binary.Write(payload, binary.LittleEndian, timestamp)
 
 			if err != nil {
 				log.Printf("Heartbeat stopped: %s\n", err)

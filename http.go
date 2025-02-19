@@ -3,13 +3,14 @@ package revoltgo
 import (
 	"bytes"
 	"fmt"
-	"github.com/goccy/go-json"
 	"io"
 	"net/http"
 	"net/url"
 	"strconv"
 	"sync"
 	"time"
+
+	"github.com/goccy/go-json"
 )
 
 var bufferPool = sync.Pool{
