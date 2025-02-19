@@ -9,15 +9,14 @@ import (
 	"time"
 
 	"github.com/girlpaws/revoltgo"
-	"github.com/joho/godotenv"
 )
 
 func main() {
 
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatalf("Error loading .env file: %s", err)
-	}
+	// err := godotenv.Load()
+	// if err != nil {
+	// 	log.Fatalf("Error loading .env file: %s", err)
+	// }
 
 	token := os.Getenv("BOT_TOKEN")
 	if token == "" {
@@ -74,7 +73,7 @@ func main() {
 	})
 
 	// Open the session.
-	err = session.Open()
+	err := session.Open()
 	if err != nil {
 		panic(err)
 	}

@@ -21,7 +21,7 @@ func New(token string) *Session {
 		Ratelimiter:       newRatelimiter(),
 		HeartbeatInterval: 30 * time.Second,
 		ReconnectInterval: 5 * time.Second,
-		UserAgent:         fmt.Sprintf("RevoltGo/%s (github.com/sentinelb51/revoltgo)", VERSION),
+		UserAgent:         fmt.Sprintf("RevoltGo/%s (github.com/girlpaws/revoltgo)", VERSION),
 		HTTP:              &http.Client{Timeout: 10 * time.Second},
 	}
 
