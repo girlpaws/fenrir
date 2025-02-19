@@ -261,7 +261,6 @@ func handle(s *Session, raw []byte) {
 		}
 
 	case
-		"MessageUpdate",
 		"ServerUpdate",
 		"ChannelUpdate",
 		"ServerRoleUpdate",
@@ -359,6 +358,21 @@ func handle(s *Session, raw []byte) {
 
 		for _, h := range s.handlersMessageAppend {
 			h(s, event.(*EventMessageAppend))
+		}
+
+	case "MessageUpdate":
+		if len(s.handlersMessageUpdate) == 0 {
+			return
+		}
+
+		event := eventConstructor()
+		if err := json.Unmarshal(raw, &event); err != nil {
+			log.Printf("unmarshal event: %s: %s", string(raw), err)
+			return
+		}
+
+		for _, h := range s.handlersMessageUpdate {
+			h(s, event.(*EventMessageUpdate))
 		}
 	case "MessageDelete":
 
