@@ -54,6 +54,7 @@ func (ws *websocket) heartbeat(session *Session, socket *gws.Conn) {
 				break
 			}
 
+			session.LastHeartbeat = timestamp
 			session.LastHeartbeatSent = time.Now()
 		case <-ws.Close:
 			session.Connected = false
@@ -120,17 +121,17 @@ func (ws *websocket) OnClose(_ *gws.Conn, err error) {
 func (ws *websocket) OnPong(socket *gws.Conn, payload []byte) {
 
 	var (
-		count int64
-		err   error
+		timestamp int64
+		err       error
 	)
 
-	if err = binary.Read(bytes.NewReader(payload), binary.LittleEndian, &count); err != nil {
+	if err = binary.Read(bytes.NewReader(payload), binary.LittleEndian, &timestamp); err != nil {
 		log.Printf("Pong: read count: %s\n", err)
 		return
 	}
 
-	if count != ws.Session.HeartbeatCount {
-		log.Printf("Heartbeat fibrillation: %d != %d\n", count, ws.Session.HeartbeatCount)
+	if timestamp != ws.Session.LastHeartbeat {
+		log.Printf("Heartbeat fibrillation: %d != %d\n", timestamp, ws.Session.HeartbeatCount)
 		return
 	}
 

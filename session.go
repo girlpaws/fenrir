@@ -2,14 +2,15 @@ package revoltgo
 
 import (
 	"fmt"
-	"github.com/goccy/go-json"
-	"github.com/lxzan/gws"
 	"log"
 	"net/http"
 	"net/url"
 	"reflect"
 	"strings"
 	"time"
+
+	"github.com/goccy/go-json"
+	"github.com/lxzan/gws"
 )
 
 func New(token string) *Session {
@@ -91,6 +92,9 @@ type Session struct {
 
 	// Last time a ping was received
 	LastHeartbeatAck time.Time
+
+	// Last Heartbeat sent
+	LastHeartbeat int64
 
 	/* Private fields */
 
