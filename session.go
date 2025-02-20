@@ -192,13 +192,7 @@ func (s *Session) addDefaultHandlers() {
 				return
 			}
 
-			for _, member := range members.Members {
-				s.State.addServerMember(member)
-			}
-
-			for _, user := range members.Users {
-				s.State.addUser(user)
-			}
+			s.State.addServerMembersAndUsers(members)
 		}
 
 		s.selfbot = s.State.Self != nil && s.State.Self.Bot == nil
