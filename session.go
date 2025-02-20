@@ -192,10 +192,6 @@ func (s *Session) addDefaultHandlers() {
                 }
 
 		for _, server := range e.Servers {
-                        if server.ID == "01F7ZSBSFHQ8TA81725KQCSDDP" {
-                                continue
-                        }
-
 			members, err := s.ServerMembers(server.ID)
 			if err != nil {
 				return
