@@ -185,6 +185,22 @@ func (s *Session) addDefaultHandlers() {
 
 	s.AddHandler(func(s *Session, e *EventReady) {
 		s.State.populate(e)
+
+		for _, server := range e.Servers {
+			members, err := s.ServerMembers(server.ID)
+			if err != nil {
+				return
+			}
+
+			for _, member := range members.Members {
+				s.State.addServerMember(member)
+			}
+
+			for _, user := range members.Users {
+				s.State.addUser(user)
+			}
+		}
+
 		s.selfbot = s.State.Self != nil && s.State.Self.Bot == nil
 	})
 
