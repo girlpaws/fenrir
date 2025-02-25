@@ -8,7 +8,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/girlpaws/revoltgo"
+	"github.com/girlpaws/fenrir"
 )
 
 func main() {
@@ -24,17 +24,17 @@ func main() {
 	}
 
 	// Create a new session using our bots token
-	session := revoltgo.New(token)
+	session := fenrir.New(token)
 
 	// Append a function that handles ready events.
 	// We will print some details from the event to the console when we receive EventReady.
-	session.AddHandler(func(session *revoltgo.Session, r *revoltgo.EventReady) {
+	session.AddHandler(func(session *fenrir.Session, r *fenrir.EventReady) {
 		fmt.Printf("Ready to process commands from %d user(s) across %d server(s)\n", len(r.Users), len(r.Servers))
 	})
 
 	// Append a function that handles message events. We will process any message that is "!ping"
 	// and respond with the latency of the websocket connection, if possible.
-	session.AddHandler(func(session *revoltgo.Session, m *revoltgo.EventMessage) {
+	session.AddHandler(func(session *fenrir.Session, m *fenrir.EventMessage) {
 
 		// If the message content is not "!ping", ignore the message.
 		if m.Content != "!ping" {
@@ -50,7 +50,7 @@ func main() {
 		time.Sleep(1 * time.Second)
 
 		// Construct a message to send back to the channel.
-		send := revoltgo.MessageSend{
+		send := fenrir.MessageSend{
 			Content: "No heartbeat yet, wait a moment...",
 		}
 

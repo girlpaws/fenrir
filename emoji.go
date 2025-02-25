@@ -1,4 +1,4 @@
-package revoltgo
+package fenrir
 
 type Emoji struct {
 	ID        string       `json:"_id"`

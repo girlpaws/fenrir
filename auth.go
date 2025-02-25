@@ -1,4 +1,4 @@
-package revoltgo
+package fenrir
 
 type LoginResponse struct {
 	Result       string              `json:"result"`

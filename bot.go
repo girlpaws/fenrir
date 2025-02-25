@@ -1,4 +1,4 @@
-package revoltgo
+package fenrir
 
 type Bot struct {
 	ID string `json:"_id"`

@@ -1,4 +1,4 @@
-package revoltgo
+package fenrir
 
 import (
 	"fmt"
@@ -21,7 +21,7 @@ func New(token string) *Session {
 		Ratelimiter:       newRatelimiter(),
 		HeartbeatInterval: 30 * time.Second,
 		ReconnectInterval: 5 * time.Second,
-		UserAgent:         fmt.Sprintf("RevoltGo/%s (github.com/girlpaws/revoltgo)", VERSION),
+		UserAgent:         fmt.Sprintf("RevoltGo/%s (github.com/girlpaws/fenrir)", VERSION),
 		HTTP:              &http.Client{Timeout: 10 * time.Second},
 	}
 
@@ -452,7 +452,7 @@ func (s *Session) AddHandler(handler any) {
 
 		secondArgument := handlerType.In(1)
 		secondArgumentName := secondArgument.String()
-		secondArgumentExpected := strings.ReplaceAll(secondArgumentName, "revoltgo.", "revoltgo.Event")
+		secondArgumentExpected := strings.ReplaceAll(secondArgumentName, "fenrir.", "fenrir.Event")
 
 		if secondArgumentName != secondArgumentExpected {
 			log.Printf(

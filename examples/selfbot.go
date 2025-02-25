@@ -8,14 +8,14 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/girlpaws/revoltgo"
+	"github.com/girlpaws/fenrir"
 	"github.com/joho/godotenv"
 )
 
 func main() {
 
 	var (
-		session *revoltgo.Session
+		session *fenrir.Session
 		err     error
 	)
 
@@ -26,13 +26,13 @@ func main() {
 
 	token := os.Getenv("USER_TOKEN")
 	if token == "" {
-		data := revoltgo.LoginData{
+		data := fenrir.LoginData{
 			Email:        os.Getenv("EMAIL"),
 			Password:     os.Getenv("PASSWORD"),
 			FriendlyName: os.Getenv("FRIENDLY_NAME"),
 		}
 
-		session, _, err = revoltgo.NewWithLogin(data)
+		session, _, err = fenrir.NewWithLogin(data)
 		if err != nil {
 			panic(err)
 		}
@@ -43,18 +43,18 @@ func main() {
 			panic(err)
 		}
 	} else {
-		session = revoltgo.New(token)
+		session = fenrir.New(token)
 	}
 
 	// Append a function that handles ready events.
 	// We will print some details from the event to the console when we receive EventReady.
-	session.AddHandler(func(session *revoltgo.Session, r *revoltgo.EventReady) {
+	session.AddHandler(func(session *fenrir.Session, r *fenrir.EventReady) {
 		fmt.Printf("Ready to process commands from %d user(s) across %d server(s)\n", len(r.Users), len(r.Servers))
 	})
 
 	// Append a function that handles message events. We will process any message that is "!ping"
 	// and respond with the latency of the websocket connection, if possible.
-	session.AddHandler(func(session *revoltgo.Session, m *revoltgo.EventMessage) {
+	session.AddHandler(func(session *fenrir.Session, m *fenrir.EventMessage) {
 
 		// If the message content is not "!ping", ignore the message.
 		if m.Content != "!ping" {
@@ -70,7 +70,7 @@ func main() {
 		time.Sleep(1 * time.Second)
 
 		// Construct a message to send back to the channel.
-		var send revoltgo.MessageSend
+		var send fenrir.MessageSend
 
 		// If the last heartbeat ack is zero, we can't do maths to get the latency.
 		if !session.LastHeartbeatAck.IsZero() {

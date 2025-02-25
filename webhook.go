@@ -1,4 +1,4 @@
-package revoltgo
+package fenrir
 
 type Webhook struct {
 	ID        string      `json:"id"`

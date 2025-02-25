@@ -16,8 +16,8 @@ We have a Revolt server dedicated to this project, where you can discuss the pro
 suggest features, or highlight issues.
 [**Join our community.**](https://rvlt.gg/R55WJBjx)
 
-## Why use revoltgo
-![RevoltGo logo RGO](https://github.com/sentinelb51/revoltgo/blob/main/logo.png)
+## Why use fenrir
+![RevoltGo logo RGO](https://github.com/sentinelb51/fenrir/blob/main/logo.png)
 
 At the time of writing, other (few) Revolt Go packages were simply unfeasible. They had:
 
@@ -35,7 +35,7 @@ RevoltGo as a project provides:
 - Extensive customisability due to low-level bindings
 - Consistent, cleaner, and maintainable codebase
 
-Additionally, revoltgo provides quality-of-life features such as:
+Additionally, fenrir provides quality-of-life features such as:
 
 - Permission calculator
 - Lightweight ratelimit handling
@@ -51,12 +51,12 @@ either of the following commands to install the package:
 
 **Stable release**
 ```bash
-go get github.com/sentinelb51/revoltgo
+go get github.com/sentinelb51/fenrir
 ```
 
 **Experimental release**
 ```bash
-go get github.com/sentinelb51/revoltgo@latest
+go get github.com/sentinelb51/fenrir@latest
 ```
 
 If you do not have a Go environment ready, **[see how to set it up here](https://go.dev/doc/install)**
@@ -64,13 +64,13 @@ If you do not have a Go environment ready, **[see how to set it up here](https:/
 ### Usage
 Now that the package is installed, you will have to import it
 ```go
-import "github.com/sentinelb51/revoltgo"
+import "github.com/sentinelb51/fenrir"
 ```
 
 Then, construct a new **session** using your bots token, and store it in a variable.
 This "session" is a centralised store of all API and websocket methods at your fingertips, relevant to the bot you're about to connect with.
 ```go
-session := revoltgo.New("your token here")
+session := fenrir.New("your token here")
 ```
 
 Finally, open the websocket connection to Revolt API. Your bot will attempt to login, and if successful, will receive events from the Revolt websocket about the world it's in.
@@ -94,7 +94,7 @@ session.Close()
 
 
 ### Examples
-The following examples are available in the [examples](https://github.com/sentinelb51/revoltgo/tree/main/examples) directory:
+The following examples are available in the [examples](https://github.com/sentinelb51/fenrir/tree/main/examples) directory:
 - **ping_bot.go**: A simple **bot** that responds to the `!ping` command.
 - **selfbot.go**: A simple **self-bot** that responds to the `!ping` command.
 

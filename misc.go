@@ -1,4 +1,4 @@
-package revoltgo
+package fenrir
 
 type CompositeChannelID struct {
 	Channel string `json:"channel"`

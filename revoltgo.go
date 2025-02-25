@@ -1,8 +1,8 @@
 /*
-Package revoltgo is a Go wrapper for the Revolt API with low-level bindings
+Package fenrir is a Go wrapper for the Revolt API with low-level bindings
 -	Made by @sentinelb51
 - 	For support, join our revolt server on the GitHub README file
 */
-package revoltgo
+package fenrir
 
 const VERSION = "v2.2.0"

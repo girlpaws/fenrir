@@ -1,4 +1,4 @@
-package revoltgo
+package fenrir
 
 import (
 	"time"

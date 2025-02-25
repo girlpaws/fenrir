@@ -1,4 +1,4 @@
-package revoltgo
+package fenrir
 
 type Group struct {
 	ID          string   `json:"_id"`

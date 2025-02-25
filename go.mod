@@ -1,4 +1,4 @@
-module github.com/girlpaws/revoltgo
+module github.com/girlpaws/fenrir
 
 go 1.23
 

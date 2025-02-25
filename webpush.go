@@ -1,4 +1,4 @@
-package revoltgo
+package fenrir
 
 type WebpushSubscription struct {
 
